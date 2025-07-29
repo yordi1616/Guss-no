@@ -1,0 +1,38 @@
+import random
+
+def guess_the_number():
+    """
+    ይህ ተግባር የአሃዝ ገማች ጨዋታውን ይሰራል።
+    ኮምፒውተሩ ከ1 እስከ 20 ያለውን ቁጥር ይመርጣል፣ ተጫዋቹ ደግሞ መገመት አለበት።
+    """
+    print("እንኳን ደህና መጣህ ወደ የአሃዝ ገማች ጨዋታ!")
+    print("እኔ ከ1 እስከ 20 ያለውን ቁጥር መርጫለሁ። ለመገመት ሞክር!")
+
+    # ኮምፒውተሩ ከ1 እስከ 20 ያለውን ቁጥር ይመርጣል።
+    secret_number = random.randint(1, 20)
+    guesses_taken = 0
+
+    while True:
+        try:
+            # የተጫዋቹን ግምት እንቀበላለን።
+            guess = int(input("ግምትህ ስንት ነው? "))
+            guesses_taken += 1
+
+            if guess < secret_number:
+                print("ግምትህ በጣም ትንሽ ነው። ከፍ ያለ ቁጥር ሞክር።")
+            elif guess > secret_number:
+                print("ግምትህ በጣም ትልቅ ነው። ዝቅ ያለ ቁጥር ሞክር።")
+            else:
+                # ትክክለኛውን ቁጥር ሲገምት
+                print(f"በጣም ጥሩ! በ {guesses_taken} ሙከራዎች ውስጥ ትክክለኛውን ቁጥር ገምተሃል።")
+                break # ጨዋታውን አቁም
+
+        except ValueError:
+            print("እባክህ ትክክለኛ ቁጥር አስገባ።")
+        except KeyboardInterrupt:
+            print("\nጨዋታው ተቋርጧል። ደህና ሁን!")
+            break
+
+# ጨዋታውን ለማስኬድ ተግባሩን እንጠራዋለን
+if __name__ == "__main__":
+    guess_the_number()
